@@ -1,6 +1,5 @@
 import CartWidget from "../CartWidget/CartWidget";
 import { NavLink, Link } from 'react-router-dom';
-// import 'bulma/css/bulma.min.css';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
