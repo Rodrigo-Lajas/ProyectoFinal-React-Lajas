@@ -1,32 +1,32 @@
-import Cartwidget from "../CartWidget/CartWidget"
+import CartWidget from "../CartWidget/CartWidget";
+import { NavLink, Link } from 'react-router-dom';
+// import 'bulma/css/bulma.min.css';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
+
 const NavBar = () => {
     return (
-        <nav>
-            <section className="hero is-info">
-                <div className="hero-body">
-                    <a className="navbar-item">
-                        <img src="src/components/NavBar/assets/logo.png" alt="Logo"/>
-                    </a>
-                    <h1 className="title">E-commerce</h1>
+        <AppBar position="static">
+            <Toolbar>
+                <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Typography variant="h6">
+                        Tienda de Telefonía movil
+                    </Typography>
+                </Link>
+
+                <div style={{ marginLeft: 'auto' }}>
+                    <Button color="inherit" component={NavLink} to="/category/Samsung">Samsung</Button>
+                    <Button color="inherit" component={NavLink} to="/category/Motorola">Motorola</Button>
+                    <Button color="inherit" component={NavLink} to="/category/Xiaomi">Xiaomi</Button>
+                    <Button color="inherit" component={NavLink} to="/category/ZTE">ZTE</Button>
+                    <CartWidget />
                 </div>
-                <div className="navbar-menu">
-                    <ul className="navbar-start">
-                        <li>
-                            <a className="navbar-item">Guitarras</a>
-                        </li>
-                        <li>
-                            <a className="navbar-item">Accesorios</a>
-                        </li>
-                        <li>
-                            <a className="navbar-item">Amplificadores</a>
-                        </li>
-                        <li>
-                            <a className="navbar-item"><Cartwidget /></a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </nav>
+            </Toolbar>
+        </AppBar>
     )
 }
-export default NavBar
+
+export default NavBar;
