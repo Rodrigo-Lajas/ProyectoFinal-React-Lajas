@@ -1,30 +1,26 @@
 import CartWidget from "../CartWidget/CartWidget";
-import { NavLink, Link } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 
 const NavBar = () => {
     return (
-        <AppBar position="static">
-            <Toolbar>
+        <nav>
+            <div>
                 <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <Typography variant="h6">
+                    <h6>
                         Tienda de Telefonía movil
-                    </Typography>
+                    </h6>
                 </Link>
 
                 <div style={{ marginLeft: 'auto' }}>
-                    <Button color="inherit" component={NavLink} to="/category/Samsung">Samsung</Button>
-                    <Button color="inherit" component={NavLink} to="/category/Motorola">Motorola</Button>
-                    <Button color="inherit" component={NavLink} to="/category/Xiaomi">Xiaomi</Button>
-                    <Button color="inherit" component={NavLink} to="/category/ZTE">ZTE</Button>
+                    <Link to="/category/Samsung">Samsung</Link>
+                    <Link to="/category/Motorola">Motorola</Link>
+                    <Link to="/category/Xiaomi">Xiaomi</Link>
+                    <Link to="/category/ZTE">ZTE</Link>
                     <CartWidget />
                 </div>
-            </Toolbar>
-        </AppBar>
+            </div>
+        </nav>
     )
 }
 
