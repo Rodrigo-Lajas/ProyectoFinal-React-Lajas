@@ -1,9 +1,14 @@
 import { useContext } from 'react'
 import { CartContext } from '../Context/CartContext'
 import { Link } from 'react-router-dom'
+import { BsCart } from "react-icons/bs";
+
+
 
 const Cart = () => {
     const { carrito, vaciarCarrito, precioTotal } = useContext(CartContext)
+
+    const {removeItem} = useContext(CartContext)
 
     const handleVaciar = () => {
         vaciarCarrito()
@@ -11,16 +16,17 @@ const Cart = () => {
 
     return ( 
         <div className="container">
-                <h1 className="main-title">Carrito</h1>
-
+                <h1 className="main-title"><BsCart /></h1>
+                <br></br>
                 {
                     carrito.map((producto) => (
                         <div key={producto.id}>
-                            <img src={producto.imagen} alt={producto.name} />
+                            <img src={producto.image} alt={producto.name} />
                             <h3>{producto.name}</h3>
                             <p>Precio unit: ${producto.price}</p>
                             <p>Precio total: ${producto.price * producto.cantidad}</p>
                             <p>Cantidad: {producto.cantidad}</p>
+                            <button onClick={() => removeItem(producto.id)}>Quitar del carrito</button>
                             <br />
                         </div>
                     ))
@@ -33,9 +39,11 @@ const Cart = () => {
                         <button onClick={handleVaciar}>Vaciar</button>
                         <button><Link to="/checkout">Finalizar compra</Link></button>
                     </> :
-                    <h2>El carrito no tiene productos</h2>
+                    <h2>El carrito esta vacio</h2>
                 }
-                
+                <Link to="/" className="navbar-brand">
+                <h6 style={{ color: 'primary' }}>Volver al inicio</h6>
+            </Link>
             </div>
         )
 }

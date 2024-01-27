@@ -1,36 +1,87 @@
-import { useState, useEffect } from "react";
-import ItemList from '../ItemList/ItemList'
+// import { useState, useEffect } from "react";
+// import ItemList from '../ItemList/ItemList'
+// import { useParams } from "react-router-dom";
+// import { getDocs, collection, query, where } from 'firebase/firestore'
+// import { db } from '../../Services/firebase/firebaseConfig';
+
+// const ItemListContainer = () => {
+//     const [productos, setProductos] = useState([])
+//     const [titulo] = useState("Productos")
+//     const categoria = useParams().categoria
+
+//     useEffect(() => {
+//         const productosRef = collection(db, "Productos")
+
+//         const q = categoria ? query(productosRef, where("category", "==", categoria)) : productosRef
+
+
+//         getDocs(q)
+//             .then((resp) => {
+
+//                 setProductos(
+//                     resp.docs.map((doc) => {
+//                         return { ...doc.data(), id: doc.id }
+//                     })
+//                 )
+//             })
+//     }, [categoria])
+
+//     return (
+//         <div>
+//             <ItemList productos={productos} titulo={titulo} />
+//         </div>
+//     )
+// }
+
+// export default ItemListContainer;
+
+import React, { useState, useEffect } from "react";
+import { Row, Col, Spinner } from "react-bootstrap";
+import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import { getDocs, collection, query, where } from 'firebase/firestore'
-import { db } from '../../Services/firebase/firebaseConfig';
+import { getDocs, collection, query, where } from "firebase/firestore";
+import { db } from "../../Services/firebase/firebaseConfig";
 
 const ItemListContainer = () => {
-    const [productos, setProductos] = useState([])
-    const [titulo] = useState("Productos")
-    const categoria = useParams().categoria
+    const [productos, setProductos] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { categoria } = useParams();
 
     useEffect(() => {
-        const productosRef = collection(db, "Productos")
-
-        const q = categoria ? query(productosRef, where("category", "==", categoria)) : productosRef
-
+        const productosRef = collection(db, "Productos");
+        const q = categoria ? query(productosRef, where("category", "==", categoria)) : productosRef;
 
         getDocs(q)
             .then((resp) => {
-
                 setProductos(
                     resp.docs.map((doc) => {
-                        return { ...doc.data(), id: doc.id }
+                        return { ...doc.data(), id: doc.id };
                     })
-                )
+                );
             })
-    }, [categoria])
+            .catch((error) => {
+                console.error("Error al obtener datos:", error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [categoria]);
 
     return (
-        <div>
-            <ItemList productos={productos} titulo={titulo} />
+        <div className="container mt-4">
+            {loading ? (
+                <Row>
+                    <Col className="text-center">
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Cargando...</span>
+                        </Spinner>
+                    </Col>
+                </Row>
+            ) : (
+                <ItemList productos={productos} />
+            )}
         </div>
-    )
-}
+    );
+};
 
 export default ItemListContainer;

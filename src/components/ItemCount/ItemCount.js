@@ -1,15 +1,16 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const ItemCount = ({ cantidad, handleRestar, handleSumar, handleAgregar }) => {
 
     return (
-        <div>
+        <div className='container'>
             <div className="item-count">
-                <button onClick={handleRestar}>-</button>
+                <Button variant='secondary' onClick={handleRestar}>-</Button>
                 <p>{cantidad}</p>
-                <button onClick={handleSumar}>+</button>
+                <Button variant='secondary' onClick={handleSumar}>+</Button>
             </div>
-            <button className="agregar-al-carrito" onClick={handleAgregar}>Agregar al carrito</button>
+            <Button className="agregar-al-carrito" variant='primary' onClick={handleAgregar}>Agregar al carrito</Button>
         </div>
     )
 }
