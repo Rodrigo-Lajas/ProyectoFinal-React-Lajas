@@ -4,7 +4,10 @@ import { CartContext } from "../Context/CartContext";
 import { collection, addDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom'
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 const Checkout = () => {
     const [pedidoId, setPedidoId] = useState("");
@@ -38,20 +41,38 @@ const Checkout = () => {
     }
 
     return (
-        <div className="container">
+        <div className="Form">
             <h1 className="main-title">Finalizar compra</h1>
-            <form className="formulario" onSubmit={handleSubmit(comprar)}>
 
-                <input type="text" placeholder="Ingresá tu nombre" {...register("nombre")} />
-                <input type="email" placeholder="Ingresá tu e-mail" {...register("email")} />
-                <input type="phone" placeholder="Ingresá tu teléfono" {...register("telefono")} />
+            <Form className="formulario" onSubmit={handleSubmit(comprar)}>
+                <Row>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Nombre</Form.Label>
+                            <Form.Control type="text" placeholder="Ingresá tu nombre" {...register("nombre")} />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" placeholder="tiendadetelefoniamovil@email.com" {...register("email")} />
+                        </Form.Group>
+                    </Col>    
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Telefono</Form.Label>
+                            <Form.Control type="phone" placeholder="1234567890" {...register("telefono")} />
+                        </Form.Group>
+                    </Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Button className="enviar" type="submit">Comprar</Button>
+                            <Link to='/cart' className="CartWidget nav-link">
+                                <p style={{ margin: 0 }}>Volver al carrito</p>
+                            </Link>
+                        </Form.Group>
+                </Row>
+            </Form>
 
-                <button className="enviar" type="submit">Comprar</button>
-
-            </form>
-            <Link to='/cart' className="CartWidget nav-link">
-                <p style={{ margin: 0 }}>Volver al carrito</p>
-            </Link>
         </div>
     )
 }
