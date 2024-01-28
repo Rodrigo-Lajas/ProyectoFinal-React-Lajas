@@ -39,7 +39,7 @@ const NavBar = () => {
             </Link>
 
             <Nav className="ms-auto">
-                <Link to="/category/Samsung" className="navbar-brand">
+                <Link to="/category/Samsung" className="nav-link">
                     Samsung
                 </Link>
                 <Link to="/category/Motorola" className="nav-link">

@@ -1,18 +1,23 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { ButtonGroup, ButtonToolbar, Container } from 'react-bootstrap';
 
 const ItemCount = ({ cantidad, handleRestar, handleSumar, handleAgregar }) => {
 
     return (
-        <div className='container'>
-            <div className="item-count">
-                <Button variant='secondary' onClick={handleRestar}>-</Button>
+        <Container>
+            <ButtonToolbar>
+                <ButtonGroup>
+                    <Button variant='secondary' onClick={handleRestar}>-</Button>
+                </ButtonGroup>
                 <p>{cantidad}</p>
-                <Button variant='secondary' onClick={handleSumar}>+</Button>
-            </div>
+                <ButtonGroup>
+                    <Button variant='secondary' onClick={handleSumar}>+</Button>
+                </ButtonGroup>
+            </ButtonToolbar>
             <Button className="agregar-al-carrito" variant='primary' onClick={handleAgregar}>Agregar al carrito</Button>
-        </div>
+        </Container>
     )
 }
 
-export default ItemCount;
+export default ItemCount;

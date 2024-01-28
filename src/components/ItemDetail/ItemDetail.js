@@ -65,7 +65,7 @@ const ItemDetail = ({ item }) => {
 
     return (
         <article>
-            <Card className='CardItem'>
+            <Card className='CardItem' style={{ width: '36rem' }}>
                 <Row>
                     <Col md={6}>
                         <Card.Img src={item.image} alt={item.name} />
