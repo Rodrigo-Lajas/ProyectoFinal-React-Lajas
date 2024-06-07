@@ -51,9 +51,8 @@ const NavBar = () => {
                 <Link to="/category/ZTE" className="nav-link">
                     ZTE
                 </Link>
-                <Link className="nav-link">
-                    <CartWidget />
-                </Link>
+                <CartWidget className="nav-link"/>
+            
             </Nav>
 
         </Navbar>
