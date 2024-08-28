@@ -1,14 +1,19 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_APP_ID
+  apiKey: "AIzaSyBewJFVodhVnuiDOj44cK_mzn2Hw47Sx8g",
+  authDomain: "tienda-de-telefonos-movi-4cecb.firebaseapp.com",
+  projectId: "tienda-de-telefonos-movi-4cecb",
+  storageBucket: "tienda-de-telefonos-movi-4cecb.appspot.com",
+  messagingSenderId: "508161183668",
+  appId: "1:508161183668:web:8d875a8e06773916862ce1"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app)
+const db = getFirestore(app)
+
+export { db }

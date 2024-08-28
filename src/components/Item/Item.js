@@ -9,8 +9,10 @@ const Item = ({ producto }) => {
             <Card.Body>
                 <Card.Title>{producto.name}</Card.Title>
                 <Card.Text>
-                    <p>Precio: ${producto.price}</p>
-                    <p>Categoria: {producto.category}</p>
+                    Precio: ${producto.price}
+                </Card.Text>
+                <Card.Text>
+                    Categoria: {producto.category}
                 </Card.Text>
                 <Link to={`/item/${producto.id}`} className='Option'>Ver Detalles</Link>
             </Card.Body>

@@ -10,14 +10,15 @@ const ItemDetailContainer = () => {
     const {id} = useParams()
 
     useEffect(() => {
-
-        const docRef = doc(db, "Productos", id)
+        const docRef = doc(db, "productos", id)
         getDoc(docRef)
             .then((resp) => {
-                setItem(
-                    { ...resp.data(), id: resp.id }
-                )
+                if (resp.exists()){
+                console.log("Document data:", resp.data());
+                setItem({ ...resp.data(), id: resp.id });
+                }
             })
+            .catch((error) => console.log("Error", error))
     }, [id])
 
     return (
