@@ -4,7 +4,7 @@ import React from 'react';
 
 const Item = ({ producto }) => {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card>
             <Card.Img variant="top" src={producto.image} alt={producto.name} />
             <Card.Body>
                 <Card.Title>{producto.name}</Card.Title>
