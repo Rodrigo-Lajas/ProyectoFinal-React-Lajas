@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import ItemCount from '../ItemCount/ItemCount';
 import { CartContext } from '../Context/CartContext';
 
@@ -20,30 +20,30 @@ const ItemDetail = ({ item }) => {
     };
 
     return (
-        <article>
-            <Card className='CardItem' style={{ width: '36rem' }}>
+        <Container className='mt-4'>
+
+            <Card>
                 <Row>
-                    <Col md={6}>
-                        <Card.Img src={item.image} alt={item.name} />
+                    <Col>
+                        <Card.Img variant="top" src={item.image} alt={item.name} />
                     </Col>
-                    <Col md={6}>
+                    <Col>
                         <Card.Body>
                             <Card.Title>{item.name}</Card.Title>
                             <Card.Text>Categoría: {item.category}</Card.Text>
                             <Card.Text>Stock: {item.stock}</Card.Text>
                             <Card.Subtitle className='mb-2 text-muted'>${item.price}</Card.Subtitle>
-
                             <ItemCount
                                 cantidad={cantidad}
                                 handleSumar={handleSumar}
                                 handleRestar={handleRestar}
-                                handleAgregar={() => { agregarAlCarrito (item, cantidad) }}
+                                handleAgregar={() => { agregarAlCarrito(item, cantidad) }}
                             />
                         </Card.Body>
                     </Col>
                 </Row>
             </Card>
-        </article>
+        </Container>
     );
 };
 

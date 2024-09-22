@@ -31,9 +31,8 @@ const Cart = () => {
                             </Col>
                             <Col>
                                 <h3>{producto.name}</h3>
-                                <p>Precio unit: ${producto.price}</p>
-                                <p>Precio total: ${producto.price * producto.cantidad}</p>
                                 <p>Cantidad: {producto.cantidad}</p>
+                                <p>Precio total: ${producto.price * producto.cantidad}</p>
                                 <Button onClick={() => removeItem(producto.id)}>Quitar del carrito</Button>
                                 <br />
                             </Col>

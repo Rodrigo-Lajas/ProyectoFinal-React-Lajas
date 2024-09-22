@@ -9,13 +9,15 @@ const ItemCount = ({ cantidad, handleRestar, handleSumar, handleAgregar }) => {
             <ButtonToolbar>
                 <ButtonGroup>
                     <Button variant='secondary' onClick={handleRestar}>-</Button>
-                </ButtonGroup>
+
                 <p>{cantidad}</p>
-                <ButtonGroup>
+
                     <Button variant='secondary' onClick={handleSumar}>+</Button>
                 </ButtonGroup>
-            </ButtonToolbar>
+                <ButtonGroup>
             <Button className="agregar-al-carrito" variant='primary' onClick={handleAgregar}>Agregar al carrito</Button>
+                </ButtonGroup>
+            </ButtonToolbar>
         </Container>
     )
 }
